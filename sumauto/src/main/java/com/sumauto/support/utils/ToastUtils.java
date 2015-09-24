@@ -1,7 +1,6 @@
 package com.sumauto.support.utils;
 
 import android.content.Context;
-import android.support.annotation.MainThread;
 import android.widget.Toast;
 
 import com.sumauto.support.config.SumautoConfig;
@@ -13,7 +12,6 @@ import com.sumauto.support.config.SumautoConfig;
 public class ToastUtils
 {
 
-    @MainThread
     public static void toast_debug(Context context, Object obj)
     {
         if (SumautoConfig.DEBUG)
