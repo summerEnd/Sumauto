@@ -10,12 +10,12 @@ public class SLog
 
     private static String TAG = "SLog";
 
-    public void debug(String tag, String pattern, Object... args)
+    public static void debug(String tag, String pattern, Object... args)
     {
         debug(tag, String.format(pattern, args));
     }
 
-    public void debug(String tag, Object value)
+    public static void debug(String tag, Object value)
     {
         if (TextUtils.isEmpty(tag))
         {

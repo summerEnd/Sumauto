@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.android.databinding'
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.1'
 
     defaultConfig {
-        applicationId "com.sumauto.support.demo"
-        minSdkVersion 11
+        applicationId "com.sumauto.demo"
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -17,9 +17,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+    }
 }
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':sumauto')
+    compile 'com.android.support:design:23.0.1'
 }
