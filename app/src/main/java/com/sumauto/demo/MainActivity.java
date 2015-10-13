@@ -29,12 +29,13 @@ public class MainActivity extends AppCompatActivity
 {
 
     int titleBackground;
-
+    int dark;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         titleBackground = SDKUtils.getColor(this, R.color.blue_A);
+        dark = SDKUtils.getColor(this, R.color.dark_A);
 
         setContentView(R.layout.content_main);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -69,27 +70,27 @@ public class MainActivity extends AppCompatActivity
                 int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
                 if (firstVisibleItemPosition == 0)
                 {
+
                     View header = recyclerView.getChildAt(0);
                     SLog.debug("", "top:%d dx=%d dy=%d", header.getTop(), dx, dy);
 
                     ActionBar actionBar = getSupportActionBar();
                     if (null != actionBar)
                     {
-                        int alpha = Math.abs((int) ((-header.getTop() / (float) header.getMeasuredHeight()) * 255));
-                        alpha = Math.max(0, Math.min(alpha, 255));
+                        int alpha = Math.abs((int) ((-header.getTop() / (float) header.getMeasuredHeight()) * 0xff));
+
+                        recyclerView.setBackgroundColor(ColorUtils.setAlphaComponent(dark,Math.max(0x55,0xff-alpha) ));
+
+                        alpha = Math.max(0, Math.min(alpha, 0xaa));
+
                         int color = ColorUtils.setAlphaComponent(titleBackground, alpha);
-                        //                        toolbar.setBackgroundColor(color);
                         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
                         SDKUtils.setStatusBarColor(getWindow(), color);
                     }
                 }
                 else
                 {
-                    recyclerView.setSystemUiVisibility(
-                            //View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
-                            View.SYSTEM_UI_FLAG_VISIBLE
-                            //| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
-                    );
+
                 }
             }
         });

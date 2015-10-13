@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>
+        <item name="android:windowBackground">@color/content_background</item>
     </style>
 
     <style name="FullscreenTheme" parent="AppTheme">
